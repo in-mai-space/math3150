@@ -11,17 +11,194 @@
 % =========================
 \section*{Problem 1}
 
+Let $\varepsilon > 0$. We want to show that there exists $N \in \mathbb{N}$ such that for all $n > N$,
+\[
+	\left| \frac{5n+2}{8n-3} - \frac{5}{8} \right| < \varepsilon.
+\]
+
+Consider
+\begin{align*}
+	\left| \frac{5n+2}{8n-3} - \frac{5}{8} \right|
+	 & = \left| \frac{8(5n+2) - 5(8n-3)}{8(8n-3)} \right| \\
+	 & = \left| \frac{31}{8(8n-3)} \right|.
+\end{align*}
+
+Notice that for $n \ge 1$, the denominator is positive:
+\[
+	8(8n-3) > 0 \quad \text{and the numerator } 31 > 0.
+\]
+Hence the fraction is positive, so the absolute value can be dropped:
+\[
+	\left| \frac{31}{8(8n-3)} \right| = \frac{31}{8(8n-3)}.
+\]
+
+Furthermore, for $n \ge 1$ we have
+\[
+	8n - 3 \ge 4n \implies \frac{31}{8(8n-3)} \le \frac{31}{8 \cdot 4n} = \frac{31}{32n}.
+\]
+
+Now choose $N \in \mathbb{N}$ such that
+\[
+	\frac{31}{32N} < \varepsilon,
+\]
+that is,
+\[
+	N > \frac{31}{32\varepsilon}.
+\]
+
+Let
+\[
+	N = \left\lceil \frac{31}{32\varepsilon} \right\rceil.
+\]
+
+Then for all $n > N$,
+\[
+	\left| \frac{5n+2}{8n-3} - \frac{5}{8} \right| \le \frac{31}{32n} < \varepsilon.
+\]
+
+Therefore,
+\[
+	\forall \varepsilon > 0, \ \exists N \in \mathbb{N} \text{ such that } \forall n > N, \
+	\left| \frac{5n+2}{8n-3} - \frac{5}{8} \right| < \varepsilon.
+\]
 
 % =========================
 % Problem 2
 % =========================
 \section*{Problem 2}
+We want to compute
+\[
+	\lim_{n \to \infty} \left( \sqrt{4n^2 + 3n + 8} - 2n \right).
+\]
 
+To simplify, multiply and divide by the conjugate:
+\[
+	\sqrt{4n^2 + 3n + 8} - 2n
+	= \frac{(\sqrt{4n^2 + 3n + 8} - 2n)(\sqrt{4n^2 + 3n + 8} + 2n)}{\sqrt{4n^2 + 3n + 8} + 2n}.
+\]
+
+The numerator simplifies using the difference of squares:
+\[
+	(\sqrt{4n^2 + 3n + 8})^2 - (2n)^2 = (4n^2 + 3n + 8) - 4n^2 = 3n + 8.
+\]
+
+So we have
+\[
+	\sqrt{4n^2 + 3n + 8} - 2n = \frac{3n + 8}{\sqrt{4n^2 + 3n + 8} + 2n}.
+\]
+
+Factor \(n\) from numerator and denominator:
+\[
+	\frac{3n + 8}{\sqrt{4n^2 + 3n + 8} + 2n}
+	= \frac{n(3 + 8/n)}{n \left( \sqrt{4 + 3/n + 8/n^2} + 2 \right)}
+	= \frac{3 + 8/n}{\sqrt{4 + 3/n + 8/n^2} + 2}.
+\]
+
+Now take the limit as \(n \to \infty\):
+\[
+	\lim_{n \to \infty} \frac{3 + 8/n}{\sqrt{4 + 3/n + 8/n^2} + 2}
+	= \frac{3 + 0}{\sqrt{4 + 0 + 0} + 2}
+	= \frac{3}{2 + 2}
+	= \frac{3}{4}.
+\]
+
+Hence,
+\[
+	\lim_{n \to \infty} \left( \sqrt{4n^2 + 3n + 8} - 2n \right) = \frac{3}{4}.
+\]
 
 % =========================
 % Problem 3
 % =========================
 \section*{Problem 3}
+
+\textbf{(a)}
+
+Let $\varepsilon > 0$. We want to show that there exists $N \in \mathbb{N}$ such that for all $n > N$,
+\[
+	\left| \frac{3n^2 - n}{6n^2 + 1} - \frac{1}{2} \right| < \varepsilon.
+\]
+
+Consider
+\begin{align*}
+	\left| \frac{3n^2 - n}{6n^2 + 1} - \frac{1}{2} \right|
+	 & = \left| \frac{2(3n^2 - n) - (6n^2 + 1)}{2(6n^2 + 1)} \right| \\
+	 & = \left| \frac{-2n - 1}{2(6n^2 + 1)} \right|                  \\
+	 & = \frac{2n + 1}{2(6n^2 + 1)}.
+\end{align*}
+
+Notice that for $n \ge 1$, the denominator is positive:
+\[
+	2(6n^2 + 1) > 0 \quad \text{and the numerator } 2n + 1 > 0.
+\]
+Hence the fraction is positive, so the absolute value can be dropped:
+\[
+	\left| \frac{-2n - 1}{2(6n^2 + 1)} \right| = \frac{2n + 1}{2(6n^2 + 1)}.
+\]
+
+Furthermore, for $n \ge 1$ we have
+\[
+	2n + 1 \le 3n \quad \text{and} \quad 2(6n^2 + 1) \ge 12n^2,
+\]
+so
+\[
+	\frac{2n + 1}{2(6n^2 + 1)} \le \frac{3n}{12n^2} = \frac{1}{4n}.
+\]
+
+Now, choose $N \in \mathbb{N}$ such that
+\[
+	\frac{1}{4N} < \varepsilon,
+\]
+that is,
+\[
+	N > \frac{1}{4\varepsilon}.
+\]
+
+Let
+\[
+	N = \left\lceil \frac{1}{4\varepsilon} \right\rceil.
+\]
+
+Then for all $n > N$,
+\[
+	\left| \frac{3n^2 - n}{6n^2 + 1} - \frac{1}{2} \right| \le \frac{1}{4n} < \varepsilon.
+\]
+
+Therefore,
+\[
+	\forall \varepsilon > 0, \ \exists N \in \mathbb{N} \text{ such that } \forall n > N, \
+	\left| \frac{3n^2 - n}{6n^2 + 1} - \frac{1}{2} \right| < \varepsilon.
+\]
+
+\bigskip
+
+\textbf{(b)}
+
+Suppose, for the sake of contradiction, that the sequence converges to some limit $x \in \mathbb{R}$.
+
+By the definition of the limit, for any $\varepsilon > 0$, there exists $N \in \mathbb{N}$ such that for all $n > N$,
+\[
+	|x_n - x| < \varepsilon.
+\]
+
+Take $\varepsilon = 1$. Then there exists $N \in \mathbb{N}$ such that for all $n > N$,
+\[
+	\left| \sqrt{2n} - 1 - x \right| < 1.
+\]
+
+This inequality implies
+\[
+	-1 < \sqrt{2n} - 1 - x < 1 \quad \implies \quad x < \sqrt{2n} < x + 2.
+\]
+
+Squaring the upper bound, we get
+\[
+	2n < (x + 2)^2 \quad \implies \quad n < \frac{(x + 2)^2}{2}.
+\]
+
+However, $n \in \mathbb{N}$ can be arbitrarily large, so this inequality cannot hold for all $n$.
+
+This is a contradiction. Therefore, the sequence $(x_n)$ does \textbf{not converge}.
 
 
 % =========================
@@ -29,12 +206,99 @@
 % =========================
 \section*{Problem 4}
 
+Let $(x_n)$ be defined by
+\[
+	x_{n+1} = \frac{3}{5}x_n + \frac{7}{5}, \quad x_1 = 2.
+\]
+
+\textbf{(a)}
+
+\textbf{Claim:} For all $n \in \mathbb{N}$,
+\[
+	x_{n+1} - x_n \ge 0 \quad \text{and} \quad x_n \le \frac{7}{2}.
+\]
+
+\textbf{Proof (by induction):}
+
+\textbf{Base case:} For $n=1$, we have
+\[
+	x_1 = 2 \le \frac{7}{2}, \quad x_2 = \frac{3}{5}x_1 + \frac{7}{5} = \frac{6}{5} + \frac{7}{5} = \frac{13}{5} = 2.6 \ge x_1.
+\]
+Hence the claim holds for $n=1$.
+
+\textbf{Inductive step:} Assume that for some $n \in \mathbb{N}$,
+\[
+	x_n \le \frac{7}{2} \quad \text{and} \quad x_{n} - x_{n-1} \ge 0.
+\]
+
+Then
+\[
+	x_{n+1} = \frac{3}{5}x_n + \frac{7}{5} \le \frac{3}{5} \cdot \frac{7}{2} + \frac{7}{5} = \frac{21}{10} + \frac{14}{10} = \frac{35}{10} = \frac{7}{2}.
+\]
+Hence \(x_{n+1} \le \frac{7}{2}\).
+
+Next, compute
+\[
+	x_{n+1} - x_n = \frac{3}{5}x_n + \frac{7}{5} - x_n = \frac{3}{5}x_n - \frac{5}{5}x_n + \frac{7}{5} = \frac{7 - 2x_n}{5}.
+\]
+
+Since \(x_n \le \frac{7}{2}\), we have
+\[
+	7 - 2x_n \ge 0 \quad \implies \quad x_{n+1} - x_n \ge 0.
+\]
+
+Therefore, by the principle of mathematical induction, for all $n \in \mathbb{N}$,
+\[
+	x_n \le \frac{7}{2} \quad \text{and} \quad x_{n+1} - x_n \ge 0.
+\]
+
+\hfill \(\square\)
+
+\bigskip
+
+\textbf{(b)}
+
+From part (a), $(x_n)$ is increasing and bounded above by $\frac{7}{2}$.
+
+By the Bounded Monotone Convergence Theorem, every monotone increasing sequence that is bounded above converges. Therefore, $(x_n)$ converges. Let
+\[
+	x = \lim_{n \to \infty} x_n.
+\]
+
+Taking the limit in the recursive formula
+\[
+	x_{n+1} = \frac{3}{5}x_n + \frac{7}{5},
+\]
+and using the properties of limits, we get
+\[
+	x = \frac{3}{5}x + \frac{7}{5}.
+\]
+
+Solving for \(x\):
+\begin{align*}
+	x  & = \frac{3}{5}x + \frac{7}{5} \\
+	5x & = 3x + 7                     \\
+	2x & = 7                          \\
+	x  & = \frac{7}{2}.
+\end{align*}
+
+Thus,
+\[
+	\lim_{n \to \infty} x_n = \frac{7}{2}.
+\]
 
 % =========================
 % Problem 5
 % =========================
 \section*{Problem 5}
 
+\[
+	\begin{aligned}
+		\text{a) } & x_n = \left(\frac{4}{17}\right)^n, & y_n = \left(\frac{1}{2}\right)^n, & \quad \frac{x_n}{y_n} \to 0                         \\
+		\text{b) } & x_n = \frac{19}{7n+13},            & y_n = \frac{3n-5}{4n^2 + 13},     & \quad \frac{x_n}{y_n} \to \frac{76}{21} > 0         \\
+		\text{c) } & x_n = \frac{1}{n},                 & y_n = \frac{1}{n^2},              & \quad \frac{x_n}{y_n} = n \text{ does not converge}
+	\end{aligned}
+\]
 
 \end{document}
 
