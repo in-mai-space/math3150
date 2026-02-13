@@ -12,25 +12,481 @@
 % =========================
 \section*{Problem 1}
 
+Since $(x_n)$ is Cauchy, there exists $N_0 \in \mathbb{N}$ such that
+\[
+	|x_n - x_m| < 1
+	\quad \text{for all } n,m \ge N_0.
+\]
+Fix $m = N_0$. Then for all $n \ge N_0$,
+\[
+	|x_n| \le |x_{N_0}| + 1.
+\]
+Define
+\[
+	M_x = \max\left\{ |x_1|, \dots, |x_{N_0}|, |x_{N_0}| + 1 \right\}.
+\]
+Then $|x_n| \le M_x$ for all $n \in \mathbb{N}$.
+Thus $(x_n)$ is bounded.
+
+Similarly, since $(y_n)$ is Cauchy, there exists $M_y > 0$ such that
+\[
+	|y_n| \le M_y
+	\quad \text{for all } n \in \mathbb{N}.
+\]
+
+\medskip
+
+Let $\varepsilon > 0$ be given. For arbitrary $n,m \in \mathbb{N}$,
+\[
+	|z_n - z_m|
+	= |x_n y_n - x_m y_m|.
+\]
+Add and subtract $x_m y_n$:
+\[
+	|x_n y_n - x_m y_n + x_m y_n - x_m y_m|.
+\]
+Factor:
+\[
+	|y_n(x_n - x_m) + x_m(y_n - y_m)|.
+\]
+By the triangle inequality,
+\[
+	|z_n - z_m|
+	\le |y_n||x_n - x_m| + |x_m||y_n - y_m|.
+\]
+Using boundedness,
+\[
+	|z_n - z_m|
+	\le M_y |x_n - x_m| + M_x |y_n - y_m|.
+\]
+
+\medskip
+
+Since $(x_n)$ is Cauchy, there exists $N_1 \in \mathbb{N}$ such that
+\[
+	|x_n - x_m| < \frac{\varepsilon}{2M_y}
+	\quad \text{for all } n,m \ge N_1.
+\]
+Since $(y_n)$ is Cauchy, there exists $N_2 \in \mathbb{N}$ such that
+\[
+	|y_n - y_m| < \frac{\varepsilon}{2M_x}
+	\quad \text{for all } n,m \ge N_2.
+\]
+
+Let $N = \max\{N_1, N_2\}$. Then for all $n,m \ge N$,
+\[
+	M_y |x_n - x_m| < \frac{\varepsilon}{2}
+	\quad \text{and} \quad
+	M_x |y_n - y_m| < \frac{\varepsilon}{2}.
+\]
+Therefore,
+\[
+	|z_n - z_m|
+	\le M_y |x_n - x_m| + M_x |y_n - y_m|
+	< \frac{\varepsilon}{2} + \frac{\varepsilon}{2}
+	= \varepsilon.
+\]
+
+\medskip
+
+Hence, for every $\varepsilon > 0$, there exists $N \in \mathbb{N}$ such that
+\[
+	|z_n - z_m| < \varepsilon
+	\quad \text{for all } n,m \ge N.
+\]
+
+By definition, a sequence $(x_n)$ in $\mathbb{R}$ is called \emph{Cauchy} if
+for every $\varepsilon > 0$ there exists $N \in \mathbb{N}$ such that
+\[
+	|x_n - x_m| < \varepsilon
+	\quad \text{for all } n,m \ge N.
+\]
+
+Since we have shown that $(z_n)$ satisfies this condition, it follows that
+$(z_n)$ is a Cauchy sequence.
+
+\hfill $\square$
 
 % =========================
 % Problem 2
 % =========================
 \section*{Problem 2}
+\subsection*{a)}
+Consider the sequence
+\[
+	(x_n) = \frac{1}{2}, \frac{1}{3}, -\frac{2}{3}, \frac{1}{4}, -\frac{2}{4}, \frac{3}{4}, \dots
+\]
+
+\paragraph{Boundedness.} Observe that each term satisfies
+\[
+	-1 \le x_n \le 1 \quad \text{for all } n \in \mathbb{N}.
+\]
+Indeed, the numerator is always less than or equal to the denominator in absolute value, so $|x_n| \le 1$. Therefore, the sequence is bounded both above and below, which means $(x_n)$ is bounded.
+
+\paragraph{Non-monotonicity.} Consider the first few terms:
+\[
+	x_1 = \frac{1}{2}, \quad x_2 = \frac{1}{3}, \quad x_3 = -\frac{2}{3}, \quad x_4 = \frac{1}{4}.
+\]
+\begin{itemize}
+	\item $x_2 < x_1$, so the sequence is not monotonically increasing.
+	\item $x_4 > x_3$, so the sequence is not monotonically decreasing.
+\end{itemize}
+
+Hence, the sequence $(x_n)$ is bounded but \textbf{not monotonous}.
+
+\subsection*{b)}
+Recall that a sequence $(x_n)$ is Cauchy if
+\[
+	\forall \varepsilon > 0, \, \exists N \in \mathbb{N} \text{ such that } |x_m - x_n| < \varepsilon \quad \forall m,n \ge N.
+\]
+
+Consider the sequence
+\[
+	x_n = \frac{1}{2}, \frac{1}{3}, -\frac{2}{3}, \frac{1}{4}, -\frac{2}{4}, \frac{3}{4}, \dots
+\]
+
+Define two subsequences:
+\begin{align*}
+	x_{n_k}^{+} & = \text{largest positive term in the $k$-th block} = \frac{1}{2}, \frac{1}{4}, \frac{1}{5}, \dots \\
+	x_{n_k}^{-} & = \text{largest negative term in the $k$-th block} = -\frac{2}{3}, -\frac{1}{2}, \dots
+\end{align*}
+
+Observe that for all $k \in \mathbb{N}$,
+\[
+	|x_{n_k}^{+} - x_{n_k}^{-}| \ge \frac{1}{2}.
+\]
+
+Take $\varepsilon = \frac{1}{2}$. Then, for any $N \in \mathbb{N}$, we can choose $m = n_k^{+} \ge N$ and $n = n_k^{-} \ge N$, so that
+\[
+	|x_m - x_n| = |x_{n_k}^{+} - x_{n_k}^{-}| \ge \varepsilon.
+\]
+
+This shows that no matter how large $N$ is chosen, the terms do not all get within $\varepsilon$ of each other. Therefore, $(x_n)$ is \textbf{not a Cauchy sequence}.
+
+\hfill $\square$
+\subsection*{c)}
+Consider the sequence
+\[
+	x_n = \frac{1}{2}, \frac{1}{3}, -\frac{2}{3}, \frac{1}{4}, -\frac{2}{4}, \frac{3}{4}, \dots
+\]
+
+\paragraph{Strictly increasing subsequence.} Define a subsequence $(y_n)$ by taking the largest positive term from each block:
+\[
+	y_1 = x_1 = \frac{1}{2}, \quad
+	y_2 = x_6 = \frac{3}{4}, \quad
+	y_3 = x_{12} = \frac{5}{6}, \quad
+	y_4 = x_{20} = \frac{7}{8}, \dots
+\]
+Expanded, the first few terms are:
+\[
+	y_n = \frac{1}{2}, \frac{3}{4}, \frac{5}{6}, \frac{7}{8}, \frac{9}{10}, \dots
+\]
+Clearly, $y_1 < y_2 < y_3 < y_4 < \dots$, so $(y_n)$ is strictly increasing.
+
+\paragraph{Strictly decreasing subsequence.} Define a subsequence $(z_n)$ by taking the first positive term from each block:
+\[
+	z_1 = x_1 = \frac{1}{2}, \quad
+	z_2 = x_2 = \frac{1}{3}, \quad
+	z_3 = x_4 = \frac{1}{4}, \quad
+	z_4 = x_7 = \frac{1}{5}, \dots
+\]
+Expanded, the first few terms are:
+\[
+	z_n = \frac{1}{2}, \frac{1}{3}, \frac{1}{4}, \frac{1}{5}, \frac{1}{6}, \dots
+\]
+Clearly, $z_1 > z_2 > z_3 > z_4 > \dots$, so $(z_n)$ is strictly decreasing.
+\subsection*{d)}
+\textbf{Strictly increasing subsequence}
+Since $(x_n)$ is bounded above by $1$, we have
+\[
+	x_n \le 1 \quad \text{for all } n \in \mathbb{N}.
+\]
+Because $(y_n)$ is a subsequence of $(x_n)$, it follows that
+\[
+	y_n \le 1 \quad \text{for all } n \in \mathbb{N}.
+\]
+Thus $1$ is an upper bound for $(y_n)$, and we test $1$ as a candidate limit.
+
+For $n \ge 1$,
+\[
+	y_n
+	=
+	\frac{2n-1}{2n}
+	=
+	1 - \frac{1}{2n}.
+\]
+
+Let $\varepsilon > 0$ be given. Then
+\[
+	|y_n - 1|
+	=
+	\left| -\frac{1}{2n} \right|
+	=
+	\frac{1}{2n}.
+\]
+
+We require
+\[
+	\frac{1}{2n} < \varepsilon,
+\]
+which is equivalent to
+\[
+	n > \frac{1}{2\varepsilon}.
+\]
+
+Choose
+\[
+	N := \left\lceil \frac{1}{2\varepsilon} \right\rceil.
+\]
+Then for all $n \ge N$,
+\[
+	|y_n - 1|
+	=
+	\frac{1}{2n}
+	\le
+	\frac{1}{2N}
+	<
+	\varepsilon.
+\]
+
+Hence,
+\[
+	\lim_{n \to \infty} y_n = 1.
+\]
+
+\bigskip
+
+\textbf{Strictly decreasing subsequence}
+For all $n \ge 1$, we have
+\[
+	z_n = \frac{1}{n+1} > 0.
+\]
+Thus $(z_n)$ is bounded below by $0$. Moreover, as $n$ increases, the denominator $n+1$ increases, so the values $\frac{1}{n+1}$ become smaller and approach $0$.
+This suggests testing $z = 0$ as a candidate limit.
+
+Let $\varepsilon > 0$ be given. Then
+\[
+	|z_n - 0|
+	=
+	\left| \frac{1}{n+1} \right|
+	=
+	\frac{1}{n+1},
+\]
+since $n+1 > 0$.
+
+We require
+\[
+	\frac{1}{n+1} < \varepsilon,
+\]
+which is equivalent to
+\[
+	n > \frac{1}{\varepsilon} - 1.
+\]
+
+Choose
+\[
+	N := \left\lceil \frac{1}{\varepsilon} - 1 \right\rceil.
+\]
+Then for all $n \ge N$,
+\[
+	|z_n - 0|
+	=
+	\frac{1}{n+1}
+	\le
+	\frac{1}{N+1}
+	<
+	\varepsilon.
+\]
+
+Thus,
+\[
+	\lim_{n \to \infty} z_n = 0.
+\]
+
+\bigskip
+
+\textbf{Difference in limit of subsequences}
+We have shown that
+\[
+	\lim_{n \to \infty} y_n = 1
+	\quad \text{and} \quad
+	\lim_{n \to \infty} z_n = 0.
+\]
+
+Since $1 \neq 0$, the two subsequences converge to different limits.
+However, if a sequence converges, then every subsequence must converge to the same limit.
+Therefore, $(x_n)$ cannot converge.
+
+\[
+\therefore \ (x_n) \text{ diverges.}
+\quad \square
 
 % =========================
 % Problem 3
 % =========================
 \section*{Problem 3}
 
+\subsection*{a)}
+
+Let $m, n \in \mathbb{N}$ with $m > n$. By the triangle inequality,
+\[
+	|x_m - x_n| = \big| (x_m - x_{m-1}) + (x_{m-1} - x_{m-2}) + \dots + (x_{n+1} - x_n) \big|
+	\le \sum_{k=n}^{m-1} |x_{k+1} - x_k|.
+\]
+
+Using the given bound $|x_{k+1} - x_k| < \frac{1}{k^{5/3}}$, we obtain
+\[
+	|x_m - x_n| < \sum_{k=n}^{m-1} \frac{1}{k^{5/3}}.
+\]
+
+Since $\sum_{k=1}^{\infty} \frac{1}{k^{5/3}}$ is a convergent $p$-series with $p = 5/3 > 1$, its tails converge to $0$. Therefore, for any $\varepsilon > 0$, there exists $N \in \mathbb{N}$ such that
+\[
+	\sum_{k=n}^{\infty} \frac{1}{k^{5/3}} < \varepsilon \quad \text{for all } n \ge N.
+\]
+
+Consequently, for all $m > n \ge N$,
+\[
+	|x_m - x_n| < \sum_{k=n}^{m-1} \frac{1}{k^{5/3}} \le \sum_{k=n}^{\infty} \frac{1}{k^{5/3}} < \varepsilon.
+\]
+
+Hence, $(x_n)$ is a Cauchy sequence. Since every Cauchy sequence in $\mathbb{R}$ converges, it follows that $(x_n)$ is convergent.
+
+\subsection*{b)}
+
+Consider the sequence
+\[
+	s_n = \ln(n), \quad n \in \mathbb{N}.
+\]
+
+Then
+\[
+	|s_{n+1} - s_n| = |\ln(n+1) - \ln(n)| = \ln\Big(1 + \frac{1}{n}\Big) < \frac{1}{n} < \frac{1}{n^{3/5}} \quad \text{for all } n \ge 1,
+\]
+where we used the standard inequality $\ln(1+x) < x$ for $x > 0$.
+
+However,
+\[
+	\lim_{n \to \infty} s_n = \lim_{n \to \infty} \ln(n) = \infty,
+\]
+so the sequence $(s_n)$ diverges. This example shows that even if the differences $|s_{n+1}-s_n|$ tend to grow slower, the sequence itself may fail to converge.
+
 % =========================
 % Problem 4
 % =========================
 \section*{Problem 4}
+Suppose, for the sake of contradiction, that $(x_n)$ does \emph{not} converge to $x$. By the definition of convergence, this means that there exists some $\varepsilon_0 > 0$ such that for every $N \in \mathbb{N}$, there exists $n > N$ with
+\[
+	|x_n - x| \ge \varepsilon_0.
+\]
 
+Equivalently, the set of indices
+\[
+	S := \{ n \in \mathbb{N} : |x_n - x| \ge \varepsilon_0 \}
+\]
+is infinite.
+
+Since $S$ is infinite, we can enumerate its elements in increasing order:
+\[
+	S = \{ n_1 < n_2 < n_3 < \dots \}.
+\]
+
+Consider the subsequence $(x_{n_k})$ corresponding to these indices. Then, by construction,
+\[
+	|x_{n_k} - x| \ge \varepsilon_0 \quad \text{for all } k \in \mathbb{N}.
+\]
+
+This subsequence cannot converge to $x$, because no term comes within $\varepsilon_0$ of $x$.
+
+However, this contradicts the assumption that \emph{every subsequence of $(x_n)$ converges to $x$}.
+
+Therefore, our assumption that $(x_n)$ does not converge to $x$ must be false. We conclude that
+\[
+	x_n \to x \quad \text{as } n \to \infty.
+\]
+
+\hfill $\square$
 % =========================
 % Problem 5
 % =========================
 \section*{Problem 5}
+\subsection*{a)}
+For each $N \in \mathbb{N}$, define
+\[
+	X_N := \sup\{ x_n : n \ge N \}, \quad Y_N := \sup\{ y_n : n \ge N \}, \quad Z_N := \sup\{ x_n y_n : n \ge N \}.
+\]
+
+Then, by definition,
+\[
+	\limsup_{n \to \infty} x_n = \lim_{N \to \infty} X_N, \quad
+	\limsup_{n \to \infty} y_n = \lim_{N \to \infty} Y_N, \quad
+	\limsup_{n \to \infty} (x_n y_n) = \lim_{N \to \infty} Z_N.
+\]
+
+Now, for all $n \ge N$, since $x_n \ge 0$ and $y_n \ge 0$, we have
+\[
+	0 \le x_n \le X_N, \quad 0 \le y_n \le Y_N \quad \implies \quad 0 \le x_n y_n \le X_N Y_N.
+\]
+
+Taking the supremum over all $n \ge N$ gives
+\[
+	Z_N = \sup_{n \ge N} (x_n y_n) \le X_N Y_N.
+\]
+
+Finally, taking the limit as $N \to \infty$ and using the fact that the product of two convergent sequences is the limit of the product, we obtain
+
+\[
+	\limsup_{n \to \infty} (x_n y_n) = \lim_{N \to \infty} Z_N \le \lim_{N \to \infty} (X_N Y_N) = \big(\limsup_{n \to \infty} x_n\big) \cdot \big(\limsup_{n \to \infty} y_n\big).
+\]
+
+\subsection*{b)}
+
+Consider the sequences
+\[
+	x_n = (-1)^n - 10, \quad y_n = (-1)^n, \quad n \in \mathbb{N}.
+\]
+
+Then
+\[
+	(x_n) = (-11, -9, -11, -9, -11, -9, \dots), \quad
+	(y_n) = (-1, 1, -1, 1, -1, 1, \dots).
+\]
+
+
+- The sequence \(x_n\) alternates between \(-11\) and \(-9\), so
+\[
+	\limsup_{n \to \infty} x_n = -9.
+\]
+- The sequence \(y_n\) alternates between \(-1\) and \(1\), so
+\[
+	\limsup_{n \to \infty} y_n = 1.
+\]
+
+
+\[
+	x_n y_n = ((-1)^n - 10)\cdot (-1)^n = (-1)^{2n} - 10(-1)^n = 1 - 10(-1)^n.
+\]
+
+So the product sequence is
+\[
+	(x_n y_n) = (-9, 11, -9, 11, -9, 11, \dots).
+\]
+
+
+The sequence alternates between \(-9\) and \(11\), so
+\[
+	\limsup_{n \to \infty} (x_n y_n) = 11.
+\]
+
+
+\[
+	(\limsup x_n) \cdot (\limsup y_n) = (-9) \cdot 1 = -9.
+\]
+
+Clearly,
+\[
+	\limsup_{n \to \infty} (x_n y_n) = 11 > -9 = (\limsup x_n) \cdot (\limsup y_n).
+\]
+
+Hence, the inequality from part (a) fails when negative terms are allowed.
 
 \end{document}
