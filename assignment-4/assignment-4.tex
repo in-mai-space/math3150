@@ -1,0 +1,415 @@
+
+\documentclass[12pt]{article}
+
+\usepackage{amsmath, amssymb}
+
+\usepackage[margin=1in]{geometry}
+
+\begin{document}
+
+% =========================
+% Problem 1
+% =========================
+\section*{Problem 1}
+\textbf{(a)} 
+
+We show that $f(x) = \sin(x^2)$ is not uniformly continuous on $[1,\infty)$.
+
+Let $\epsilon = \tfrac{1}{2}$. We will show that for every $\delta > 0$, there exist 
+$x,y \in [1,\infty)$ such that $|x-y| < \delta$ but $|f(x)-f(y)| \ge \epsilon$.
+
+Let $\delta > 0$ be given. Choose $n \in \mathbb{N}$ large enough so that
+\[
+\frac{\tfrac{\pi}{2}}{\sqrt{2\pi n + \tfrac{\pi}{2}} + \sqrt{2\pi n}} < \delta.
+\]
+
+Define
+\[
+x = \sqrt{2\pi n + \tfrac{\pi}{2}}, \quad y = \sqrt{2\pi n}.
+\]
+Then $x,y \in [1,\infty)$.
+
+Moreover,
+\begin{align*}
+|x-y|
+&= \left| \sqrt{2\pi n + \tfrac{\pi}{2}} - \sqrt{2\pi n} \right| \\
+&= \frac{\tfrac{\pi}{2}}{\sqrt{2\pi n + \tfrac{\pi}{2}} + \sqrt{2\pi n}} \\
+&< \delta.
+\end{align*}
+
+However,
+\begin{align*}
+|f(x) - f(y)|
+&= |\sin(x^2) - \sin(y^2)| \\
+&= |\sin(2\pi n + \tfrac{\pi}{2}) - \sin(2\pi n)| \\
+&= |1 - 0| = 1 \ge \tfrac{1}{2}.
+\end{align*}
+
+Since this holds for every $\delta > 0$, $f$ is not uniformly continuous on $[1,\infty)$.
+
+\bigskip
+
+\textbf{(b)} 
+
+Let $\epsilon > 0$ and let $x,y \in [1,\infty)$. Using the identity
+\[
+a^3 - b^3 = (a-b)(a^2 + ab + b^2),
+\]
+we obtain
+\[
+|a-b| = \frac{|a^3 - b^3|}{|a^2 + ab + b^2|}.
+\]
+Let $g(x) = x^{1/3}$. Then
+\begin{align*}
+|g(x) - g(y)|
+&= |x^{1/3} - y^{1/3}| \\
+&= \frac{|x-y|}{x^{2/3} + x^{1/3}y^{1/3} + y^{2/3}}.
+\end{align*}
+
+Since $x,y \ge 1$, we have
+\[
+x^{2/3} \ge 1, \quad x^{1/3}y^{1/3} \ge 1, \quad y^{2/3} \ge 1,
+\]
+so
+\[
+x^{2/3} + x^{1/3}y^{1/3} + y^{2/3} \ge 3.
+\]
+Thus,
+\[
+|x^{1/3} - y^{1/3}| \le \frac{|x-y|}{3}.
+\]
+
+Choose $\delta = 3\epsilon$. Then if $|x-y| < \delta$,
+\[
+|g(x) - g(y)| \le \frac{|x-y|}{3} < \frac{3\epsilon}{3} = \epsilon.
+\]
+
+Therefore, $g$ is uniformly continuous on $[1,\infty)$.
+
+% =========================
+% Problem 2
+% =========================
+\section*{Problem 2}
+\textbf{(a)} 
+
+Consider the power series
+\[
+\sum_{n=1}^{\infty} \frac{(-1)^n (x-2)^n}{n \cdot 3^n}.
+\]
+Using the Ratio Test, compute
+\begin{align*}
+\lim_{n \to \infty} \left| \frac{(-1)^{n+1}(x-2)^{n+1}}{(n+1)3^{n+1}} \cdot \frac{n3^n}{(-1)^n (x-2)^n} \right|
+&= \lim_{n \to \infty} \left| \frac{(-1)(x-2)n}{(n+1)3} \right| \\
+&= \frac{|x-2|}{3} \cdot \lim_{n \to \infty} \frac{n}{n+1} \\
+&= \frac{|x-2|}{3}.
+\end{align*}
+
+By the Ratio Test, the series converges when
+\[
+\frac{|x-2|}{3} < 1 \quad \Longleftrightarrow \quad |x-2| < 3.
+\]
+Thus, the radius of convergence is
+\[
+R = 3.
+\]
+
+\bigskip
+
+\textbf{(b)} 
+The center is $a = 2$, so
+\[
+|x-2| < 3 \quad \Longleftrightarrow \quad -1 < x < 5.
+\]
+
+\medskip
+
+\textbf{At $x = -1$:}
+\begin{align*}
+\sum_{n=1}^{\infty} \frac{(-1)^n (-3)^n}{n \cdot 3^n}
+&= \sum_{n=1}^{\infty} \frac{(-1)^n (-1)^n 3^n}{n \cdot 3^n} \\
+&= \sum_{n=1}^{\infty} \frac{(-1)^{2n}}{n} \\
+&= \sum_{n=1}^{\infty} \frac{1}{n}.
+\end{align*}
+This is a $p$-series with $p = 1$. Since $p \le 1$, the series diverges by the $p$-series test. Hence, the series diverges at $x=-1$.
+
+\medskip
+
+\textbf{At $x = 5$:}
+\begin{align*}
+\sum_{n=1}^{\infty} \frac{(-1)^n (3)^n}{n \cdot 3^n}
+&= \sum_{n=1}^{\infty} \frac{(-1)^n}{n}.
+\end{align*}
+This is an alternating series. Let $a_n = \frac{1}{n}$. Then:
+\begin{itemize}
+\item $a_n \ge 0$ for all $n$,
+\item $a_n$ is decreasing since $\frac{1}{n} \ge \frac{1}{n+1}$,
+\item $\lim_{n \to \infty} a_n = 0$.
+\end{itemize}
+Therefore, by the Alternating Series Test, the series converges at $x=5$.
+
+\medskip
+
+Hence, the interval of convergence is
+\[
+(-1, 5].
+\]
+
+% =========================
+% Problem 3
+% =========================
+\section*{Problem 3}
+\textbf{(a)} 
+
+Let $\epsilon > 0$. For all $x \in [0,\infty)$,
+\[
+|f_n(x) - f(x)| 
+= \left| \left(2x + \frac{1}{\sqrt{n}}\right) - 2x \right|
+= \frac{1}{\sqrt{n}}.
+\]
+
+Choose $N \in \mathbb{N}$ such that
+\[
+\frac{1}{\sqrt{N}} < \epsilon,
+\quad \text{for example } 
+N = \left\lceil \frac{1}{\epsilon^2} \right\rceil.
+\]
+
+Then for all $n \ge N$ and all $x \in [0,\infty)$,
+\[
+|f_n(x) - f(x)| = \frac{1}{\sqrt{n}} \le \frac{1}{\sqrt{N}} < \epsilon.
+\]
+
+Therefore, $f_n \to f$ uniformly on $[0,\infty)$.
+
+\bigskip
+
+\textbf{(b)} 
+
+Let $g_n(x) = \left(2x + \frac{1}{\sqrt{n}}\right)^2$ and $g(x) = 4x^2$.
+
+Let $x \in [0,\infty)$ be fixed and let $\epsilon > 0$. We show that there exists $N \in \mathbb{N}$ such that for all $n \ge N$,
+\[
+|g_n(x) - g(x)| < \epsilon.
+\]
+
+Compute:
+\begin{align*}
+|g_n(x) - g(x)|
+&= \left| \left(2x + \frac{1}{\sqrt{n}}\right)^2 - 4x^2 \right| \\
+&= \frac{4x}{\sqrt{n}} + \frac{1}{n}.
+\end{align*}
+
+Choose
+\[
+N_1 = \left\lceil \left(\frac{8x}{\epsilon}\right)^2 \right\rceil,
+\quad
+N_2 = \left\lceil \frac{2}{\epsilon} \right\rceil,
+\]
+and let
+\[
+N = \max\{N_1, N_2\}.
+\]
+
+Then for all $n \ge N$, we have
+\[
+\frac{4x}{\sqrt{n}} \le \frac{4x}{\sqrt{N_1}} \le \frac{\epsilon}{2},
+\quad
+\frac{1}{n} \le \frac{1}{N_2} \le \frac{\epsilon}{2}.
+\]
+
+Thus,
+\[
+|g_n(x) - g(x)|
+= \frac{4x}{\sqrt{n}} + \frac{1}{n}
+\le \frac{\epsilon}{2} + \frac{\epsilon}{2}
+= \epsilon.
+\]
+
+Therefore, $g_n(x) \to g(x)$ for each fixed $x \in [0,\infty)$, so $g_n \to g$ pointwise.
+
+\bigskip
+
+\textbf{(c)} 
+
+We show that $g_n$ does not converge uniformly to $g$ on $[0,\infty)$.
+
+Let $\epsilon = 1$. For any $n \in \mathbb{N}$, choose
+\[
+x_n = \frac{\sqrt{n}}{4}.
+\]
+Then
+\begin{align*}
+|g_n(x_n) - g(x_n)|
+&= \frac{4x_n}{\sqrt{n}} + \frac{1}{n} \\
+&= \frac{4(\sqrt{n}/4)}{\sqrt{n}} + \frac{1}{n} \\
+&= 1 + \frac{1}{n} > 1 = \epsilon.
+\end{align*}
+
+Thus, for every $n$, there exists $x_n \in [0,\infty)$ such that
+\[
+|g_n(x_n) - g(x_n)| \ge \epsilon.
+\]
+
+Therefore, $g_n$ does not converge uniformly to $g$ on $[0,\infty)$.
+
+% =========================
+% Problem 4
+% =========================
+\section*{Problem 4}
+\textbf{(a)}
+
+\textbf{Case 1:} $x = 0$. Then
+\[
+f_n(0) = n \cdot 0 \cdot e^{-n^2 \cdot 0^2} = 0 \quad \text{for all } n,
+\]
+so clearly
+\[
+\lim_{n \to \infty} f_n(0) = 0.
+\]
+
+\textbf{Case 2:} $x \neq 0$. Write
+\[
+f_n(x) = n x e^{-(n x)^2}.
+\]
+Let $y = n x$. Then as $n \to \infty$, $y \to \infty$, and
+\[
+f_n(x) = y e^{-y^2}.
+\]
+Now
+\[
+\lim_{y \to \infty} y e^{-y^2} = \lim_{y \to \infty} \frac{y}{e^{y^2}} = 0
+\]
+by standard exponential growth.  
+
+Therefore, the pointwise limit is
+\[
+f(x) = \lim_{n \to \infty} f_n(x) = 0 \quad \text{for all } x \in \mathbb{R}.
+\]
+
+\bigskip
+
+\textbf{(b)}
+
+Compute the derivative of $f_n$:
+\[
+f_n'(x) = \frac{d}{dx} \big( n x e^{-n^2 x^2} \big)
+= n e^{-n^2 x^2} + n x \cdot (-2 n^2 x) e^{-n^2 x^2} 
+= n e^{-n^2 x^2} (1 - 2 n^2 x^2).
+\]
+
+Set $f_n'(x) = 0$ to find critical points:
+\[
+1 - 2 n^2 x^2 = 0 \quad \Longrightarrow \quad x = \frac{1}{\sqrt{2} n}.
+\]
+
+At this $x$, $f_n$ attains its maximum. Evaluate:
+\[
+f_n\Big(\frac{1}{\sqrt{2} n}\Big) = n \cdot \frac{1}{\sqrt{2} n} \cdot e^{-n^2 \cdot (1/2 n^2)} 
+= \frac{1}{\sqrt{2}} e^{-1/2} \approx 0.43.
+\]
+
+Since
+\[
+\sup_{x \in [0, \epsilon]} |f_n(x) - f(x)| \ge f_n\Big(\frac{1}{\sqrt{2} n}\Big) \not\to 0,
+\]
+it follows that $f_n$ does not converge uniformly to $f$ on any interval containing $0$.
+
+\bigskip
+
+\textbf{(c)}
+
+For $x \ge a > 0$, observe
+\[
+0 \le f_n(x) = n x e^{-n^2 x^2} \le n x e^{-n^2 a^2} \le n e^{-n^2 a^2} \cdot x_{\max} \le n e^{-n^2 a^2} \cdot x,
+\]
+but the key point is that $e^{-n^2 a^2}$ decays faster than any polynomial in $n$. In particular,
+\[
+\lim_{n \to \infty} n e^{-n^2 a^2} = 0.
+\]
+
+Therefore, for all $x \in [a,\infty)$,
+\[
+|f_n(x) - f(x)| = |f_n(x)| \le n x e^{-n^2 a^2} \to 0 \quad \text{as } n \to \infty.
+\]
+
+Since the bound is independent of $x$, it follows that
+\[
+\sup_{x \in [a,\infty)} |f_n(x) - f(x)| \to 0,
+\]
+and hence $f_n \to f$ uniformly on $[a,\infty)$ for any $a > 0$.
+
+% =========================
+% Problem 5
+% =========================
+\section*{Problem 5}
+\textbf{(a)} 
+
+Consider $f_n(x) = \frac{x^n}{n}$ on $[0,1]$.
+
+For $x \in [0,1)$, we have $x^n \to 0$ as $n \to \infty$, hence
+\[
+f_n(x) = \frac{x^n}{n} \to 0.
+\]
+For $x = 1$,
+\[
+f_n(1) = \frac{1}{n} \to 0.
+\]
+Thus, the pointwise limit is
+\[
+f(x) = \lim_{n \to \infty} f_n(x) = 0 \quad \text{for all } x \in [0,1].
+\]
+
+\bigskip
+
+\textbf{(b)} 
+
+We compute
+\[
+\sup_{x \in [0,1]} |f_n(x) - f(x)| 
+= \sup_{x \in [0,1]} \frac{x^n}{n}.
+\]
+Since $0 \le x \le 1$, the maximum of $x^n$ occurs at $x=1$, so
+\[
+\sup_{x \in [0,1]} \frac{x^n}{n} = \frac{1}{n}.
+\]
+Since $\frac{1}{n} \to 0$ as $n \to \infty$, it follows that
+\[
+\sup_{x \in [0,1]} |f_n(x) - f(x)| \to 0.
+\]
+Therefore, $f_n \to f$ uniformly on $[0,1]$.
+
+\bigskip
+
+\textbf{(c)} 
+
+Let $h_n(x) = f_n'(x)$. Then
+\[
+h_n(x) = \frac{d}{dx}\left(\frac{x^n}{n}\right) = x^{n-1}.
+\]
+
+\medskip
+
+\textbf{(i)} 
+
+For $x \in [0,1)$, we have $x^{n-1} \to 0$, and for $x=1$,
+\[
+h_n(1) = 1^{n-1} = 1.
+\]
+Thus, the pointwise limit is
+\[
+h(x) =
+\begin{cases}
+0, & 0 \le x < 1, \\
+1, & x = 1.
+\end{cases}
+\]
+
+\medskip
+
+\textbf{(ii)} 
+
+Each $h_n$ is continuous on $[0,1]$ because it is differentiable. However, the limit function $h$ is not continuous at $x=1$.
+
+Since the uniform limit of continuous functions must be continuous, it follows that $h_n$ does not converge uniformly to $h$ on $[0,1]$.
+
+\end{document}
