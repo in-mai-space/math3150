@@ -1,0 +1,341 @@
+\documentclass[12pt]{article}
+
+\usepackage{amsmath, amssymb}
+
+\usepackage[margin=1in]{geometry}
+
+\begin{document}
+
+% =========================
+% Problem 1
+% =========================
+\section*{Problem 1}
+Consider the sequence of functions
+\[
+	f_n(x) = n^2 x (1-x)^n, \quad x \in [0,1].
+\]
+
+\textbf{(a) Pointwise convergence:}
+
+At the endpoints:
+\[
+	f_n(0) = n^2 \cdot 0 \cdot (1-0)^n = 0, \quad
+	f_n(1) = n^2 \cdot 1 \cdot (1-1)^n = 0.
+\]
+
+For \( x \in (0,1) \), let \( r = 1-x \in (0,1) \). Then
+\[
+	f_n(x) = n^2 x r^n.
+\]
+
+Consider
+\[
+	\ln f_n(x) = \ln(n^2 x r^n) = \ln x + 2 \ln n + n \ln r.
+\]
+
+Since \( 0<r<1 \), \( \ln r < 0 \), so
+\[
+	\lim_{n \to \infty} \ln f_n(x) = \lim_{n \to \infty} \big( \ln x + 2 \ln n + n \ln r \big) = -\infty.
+\]
+
+Therefore,
+\[
+	\lim_{n \to \infty} f_n(x) = e^{-\infty} = 0.
+\]
+
+Combining all cases, \( f_n(x) \to 0 \) for all \( x \in [0,1] \). Hence, the pointwise limit function is
+\[
+	f(x) = 0.
+\]
+
+\textbf{(b) Limit of the integrals:}
+
+\[
+	\int_0^1 f_n(x) \, dx = \int_0^1 n^2 x (1-x)^n \, dx.
+\]
+
+Use the substitution \( u = 1-x \), \( du = -dx \), \( x = 1-u \):
+\[
+	\int_0^1 n^2 x (1-x)^n \, dx = \int_1^0 n^2 (1-u) u^n (-du) = \int_0^1 n^2 (1-u) u^n \, du.
+\]
+
+Split the integral:
+\[
+	\int_0^1 n^2 (1-u) u^n \, du = n^2 \int_0^1 u^n \, du - n^2 \int_0^1 u^{n+1} \, du = n^2 \left( \frac{1}{n+1} - \frac{1}{n+2} \right).
+\]
+
+Simplify:
+\[
+	n^2 \left( \frac{1}{n+1} - \frac{1}{n+2} \right) = n^2 \cdot \frac{(n+2)-(n+1)}{(n+1)(n+2)} = \frac{n^2}{(n+1)(n+2)}.
+\]
+
+Take the limit as \( n \to \infty \):
+\[
+	\lim_{n \to \infty} \int_0^1 f_n(x) \, dx = \lim_{n \to \infty} \frac{n^2}{n^2 + 3n + 2} = 1.
+\]
+
+\textbf{(c) Uniform convergence:}
+
+The pointwise limit function is \( f(x) = 0 \), so
+\[
+	\int_0^1 f(x) \, dx = 0.
+\]
+
+However,
+\[
+	\lim_{n \to \infty} \int_0^1 f_n(x) \, dx = 1 \neq 0.
+\]
+
+If \( f_n \) converged uniformly to \( f \) on \([0,1]\), we would have
+\[
+	\lim_{n \to \infty} \int_0^1 f_n(x) \, dx = \int_0^1 \lim_{n \to \infty} f_n(x) \, dx = \int_0^1 f(x) \, dx = 0,
+\]
+which is a contradiction. Therefore, \( f_n \) does \textbf{not} converge uniformly to \( f \) on \([0,1]\).
+
+% =========================
+% Problem 2
+% =========================
+\section*{Problem 2}
+Consider the sequences of functions
+\[
+	f_n(x) = \sqrt{x^2 + \frac{1}{n}}, \quad g_n(x) = \frac{\sin(nx)}{n^2}, \quad x \in [0,1].
+\]
+
+\textbf{(a) Pointwise convergence:}
+
+For \( f_n \):
+\[
+	\lim_{n \to \infty} f_n(x) = \lim_{n \to \infty} \sqrt{x^2 + \frac{1}{n}} = \sqrt{x^2} = |x| = x, \quad x \in [0,1].
+\]
+Thus, the limit function is
+\[
+	f(x) = x.
+\]
+
+For \( g_n \), note that
+\[
+	-\frac{1}{n^2} \le \frac{\sin(nx)}{n^2} \le \frac{1}{n^2}, \quad \forall x \in [0,1].
+\]
+By the Squeeze Theorem, since
+\[
+	\lim_{n \to \infty} -\frac{1}{n^2} = 0 \quad \text{and} \quad \lim_{n \to \infty} \frac{1}{n^2} = 0,
+\]
+it follows that
+\[
+	\lim_{n \to \infty} g_n(x) = 0, \quad x \in [0,1].
+\]
+Hence, the limit function is
+\[
+	g(x) = 0.
+\]
+
+\textbf{(b) Derivatives of \(f_n\) and convergence:}
+
+\[
+	f_n'(x) = \frac{x}{\sqrt{x^2 + 1/n}}.
+\]
+
+- For \( x > 0 \):
+\[
+	\lim_{n \to \infty} f_n'(x) = \frac{x}{\sqrt{x^2}} = 1 = f'(x).
+\]
+
+- At \( x = 0 \):
+\[
+	f_n'(0) = 0, \quad f'(0) = 1.
+\]
+
+Therefore,
+\[
+	\lim_{n \to \infty} f_n'(x) = f'(x) \quad \text{for all } x > 0,
+\]
+but the convergence fails at \( x = 0 \).
+
+\textbf{(c) Derivatives of \(g_n\) and convergence:}
+
+\[
+	g_n'(x) = \frac{n \cos(nx)}{n^2} = \frac{\cos(nx)}{n}.
+\]
+
+Since
+\[
+	-\frac{1}{n} \le \frac{\cos(nx)}{n} \le \frac{1}{n}, \quad \forall x \in [0,1],
+\]
+by the Squeeze Theorem,
+\[
+	\lim_{n \to \infty} g_n'(x) = 0 = g'(x), \quad x \in [0,1].
+\]
+Thus, the derivatives of \(g_n\) converge to \(g'\) uniformly on \([0,1]\).
+
+% =========================
+% Problem 3
+% =========================
+\section*{Problem 3}
+Consider the series of functions
+\[
+	\sum_{n=1}^{\infty} f_n(x), \quad f_n(x) = \frac{x^2 e^{-nx}}{n^2}, \quad x \in [0,\infty).
+\]
+
+\textbf{(a) Find the maximum \(M_n = \sup_{x \in [0,\infty)} |f_n(x)|\):}
+
+Compute the derivative:
+\[
+	f_n'(x) = \frac{1}{n^2} \left( 2x e^{-nx} + x^2 (-n) e^{-nx} \right)
+	= \frac{1}{n^2} x e^{-nx} (2 - nx).
+\]
+
+Set \( f_n'(x) = 0 \) to find critical points:
+\[
+	x = 0 \quad \text{or} \quad x = \frac{2}{n}.
+\]
+
+Evaluate \( f_n \) at these points:
+\[
+	f_n(0) = 0, \quad f_n\Big(\frac{2}{n}\Big) = \frac{(2/n)^2 e^{-2}}{n^2} = \frac{4 e^{-2}}{n^4}.
+\]
+
+Thus, the maximum value is
+\[
+	\boxed{M_n = \frac{4 e^{-2}}{n^4}}.
+\]
+
+\textbf{(b) Uniform convergence via the Weierstrass \(M\)-test:}
+
+For all \( x \in [0,\infty) \) and all \( n \in \mathbb{N} \),
+\[
+	|f_n(x)| \le M_n = \frac{4 e^{-2}}{n^4}.
+\]
+
+Since
+\[
+	\sum_{n=1}^{\infty} M_n = 4 e^{-2} \sum_{n=1}^{\infty} \frac{1}{n^4}
+\]
+is a convergent \(p\)-series with \(p=4>1\), the Weierstrass \(M\)-test implies that
+\[
+	\sum_{n=1}^{\infty} f_n(x)
+\]
+converges uniformly on \( [0,\infty) \).
+
+% =========================
+% Problem 4
+% =========================
+\section*{Problem 4}
+Let \( f : [0,2] \to \mathbb{R} \) be continuous on \( [0,2] \) and differentiable on \( (0,2) \), with \( f(0)=0 \), \( f(2)=6 \), and \( f'(x) \le 3 \) for all \( x \in (0,2) \).
+
+By the Mean Value Theorem, there exists \( c \in (0,2) \) such that
+\[
+	f'(c) = \frac{f(2) - f(0)}{2-0} = \frac{6}{2} = 3.
+\]
+
+Now, since \( f'(x) \le 3 \) for all \( x \in (0,2) \), we integrate over \( [0,2] \):
+\[
+	f(2) - f(0) = \int_0^2 f'(x)\,dx \le \int_0^2 3\,dx = 6.
+\]
+
+But \( f(2) - f(0) = 6 \), so equality holds:
+\[
+	\int_0^2 f'(x)\,dx = \int_0^2 3\,dx.
+\]
+
+Since \( f'(x) \le 3 \) for all \( x \) and the integrals are equal, it follows that
+\[
+	f'(x) = 3 \quad \text{for all } x \in (0,2).
+\]
+
+Therefore, \( f \) is linear with slope \( 3 \), so
+\[
+	f(x) = 3x + C.
+\]
+
+Using \( f(0)=0 \), we get \( C=0 \). Hence,
+\[
+	\boxed{f(x) = 3x.}
+\]
+
+% =========================
+% Problem 5
+% =========================
+\section*{Problem 5}
+Let \( f(x) = \log x \). Then \( f \) is continuous on \( (0,\infty) \) and differentiable on \( (0,\infty) \), with
+\[
+	f'(x) = \frac{1}{x}.
+\]
+
+Fix arbitrary \( 2 \le x < y < \infty \). Since \( f \) is continuous on the closed interval \( [x,y] \) and differentiable on the open interval \( (x,y) \), the Mean Value Theorem applies. Hence, there exists \( c \in (x,y) \) such that
+\[
+	\frac{\log y - \log x}{y - x} = f'(c) = \frac{1}{c}.
+\]
+
+Since \( c \in (x,y) \) and \( x \ge 2 \), we have \( c \ge 2 \), so
+\[
+	\frac{1}{c} \le \frac{1}{2}.
+\]
+
+Therefore,
+\[
+	\frac{\log y - \log x}{y - x} \le \frac{1}{2},
+\]
+which implies
+\[
+	\log y - \log x \le \frac{1}{2}(y - x),
+\]
+for all \( 2 \le x < y < \infty \).
+
+% =========================
+% Problem 6
+% =========================
+\section*{Problem 6}
+Let \( f(x) = \sqrt{x} = x^{1/2} \).
+
+\textbf{(a)} Compute derivatives:
+\[
+	f'(x) = \frac{1}{2}x^{-1/2}, \quad f''(x) = -\frac{1}{4}x^{-3/2}.
+\]
+Evaluate at \( a=1 \):
+\[
+	f(1)=1, \quad f'(1)=\frac{1}{2}, \quad f''(1)=-\frac{1}{4}.
+\]
+
+The second-order Taylor polynomial centered at \( a=1 \) is
+\[
+	P_2(x) = f(1) + f'(1)(x-1) + \frac{f''(1)}{2}(x-1)^2.
+\]
+Thus,
+\[
+	P_2(x) = 1 + \frac{1}{2}(x-1) - \frac{1}{8}(x-1)^2.
+\]
+
+\textbf{(b)} Approximate \( \sqrt{1.2} \) using \( P_2 \):
+\[
+	P_2(1.2) = 1 + \frac{1}{2}(0.2) - \frac{1}{8}(0.2)^2
+	= 1 + 0.1 - 0.005 = 1.095.
+\]
+
+\textbf{(c)} By the Taylor Remainder Theorem, there exists \( \xi \in (1,1.2) \) such that
+\[
+	R_2(1.2) = \frac{f^{(3)}(\xi)}{3!}(1.2-1)^3.
+\]
+
+Compute the third derivative:
+\[
+	f^{(3)}(x) = \frac{3}{8}x^{-5/2}.
+\]
+
+Since \( x^{-5/2} \) is decreasing on \( [1,1.2] \), we have
+\[
+	|f^{(3)}(\xi)| \le \frac{3}{8}.
+\]
+
+Hence,
+\[
+	|R_2(1.2)| \le \frac{1}{3!}\cdot \frac{3}{8} \cdot (0.2)^3
+	= \frac{3}{48} \cdot 0.008
+	= 0.0005.
+\]
+
+Therefore,
+\[
+	|f(1.2) - P_2(1.2)| \le 0.0005.
+\]
+
+\end{document}
